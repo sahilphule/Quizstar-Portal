@@ -21,4 +21,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: sahilphule0710/app:v1
+        tags: sahilphule0710/django-app

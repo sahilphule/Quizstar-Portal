@@ -18,8 +18,8 @@ spec:
       restartPolicy: Always
       containers:
       - name: django-app-container
-        image: django-app
-        imagePullPolicy: Never
+        image: sahilphule0710/django-app
+        # imagePullPolicy: Never
         command: ['/bin/bash','./entrypoint.sh']
         ports:
         - containerPort: 8000
