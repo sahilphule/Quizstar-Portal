@@ -18,8 +18,10 @@ spec:
       restartPolicy: Always
       containers:
       - name: celery-worker-container
-        image: django-app
-        imagePullPolicy: Never
+        image: sahilphule0710/django-app
+        # imagePullPolicy: Never
+        imagePullSecrets:
+        - name: app-secret
         command: ['celery', '-A', 'core', 'worker', '-l', 'INFO']
         envFrom:
         - configMapRef:

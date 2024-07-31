@@ -18,10 +18,16 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push the Docker image
+    - name: Build and push the django-app image
       uses: docker/build-push-action@v5
       with:
         context: ./django-app
-        # file: dockerfile
         push: true
         tags: sahilphule0710/django-app
+
+    - name: Build and push django-app-nginx image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./nginx
+        push: true
+        tags: sahilphule0710/django-app-nginx

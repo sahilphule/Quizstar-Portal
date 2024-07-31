@@ -18,8 +18,8 @@ spec:
       restartPolicy: Always
       containers:
       - name: nginx-container
-        image: django-app-nginx
-        imagePullPolicy: Never
+        image: sahilphule0710/django-app-nginx
+        # imagePullPolicy: Never
         ports:
         - containerPort: 80
         volumeMounts:
