@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: quizstar
+  labels:
+    pod: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: nginx
+  template:
+    metadata:
+      labels:
+        pod: nginx
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: nginx-container
+        image: django-app-nginx
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: django-app-volume-mount
+          mountPath: /django-app
+      volumes:
+      - name: django-app-volume-mount
+        persistentVolumeClaim:
+          claimName: django-app-pvc

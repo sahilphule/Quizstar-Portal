@@ -1,0 +1,12 @@
+asgiref
+django
+gunicorn
+sqlparse
+tzdata
+mysqlclient
+redis
+celery
+pytz
+pandas
+openpyxl
+django-tinymce

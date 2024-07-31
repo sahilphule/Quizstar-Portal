@@ -1,0 +1,59 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql
+    container_name: mysql-service
+    volumes:
+    - ./mysql:/var/lib/mysql
+    env_file:
+    - ./.env
+
+  django-app:
+    build:
+      context: ./django-app
+      dockerfile: dockerfile
+    image: django-app
+    container_name: django-app
+    volumes:
+    - ./django-app:/django-app
+    env_file:
+    - ./.env
+    ports:
+    - 8000:8000
+    depends_on:
+    - mysql
+
+  # nginx:
+  #   build: 
+  #     context: ./nginx
+  #     dockerfile: dockerfile
+  #   container_name: nginx
+  #   volumes:
+  #   - ./django-app:/django-app
+  #   ports:
+  #   - 80:80
+  #   depends_on:
+  #   - django-app
+
+  # redis:
+  #   image: redis
+  #   container_name: redis
+
+  # celery:
+  #   image: django-app
+  #   container_name: celery
+  #   command: celery -A core worker -l INFO
+  #   volumes:
+  #   - ./django-app:/django-app
+  #   depends_on:
+  #   - django-app
+  #   - redis
+  
+  # celery_beat:
+  #   image: django-app
+  #   container_name: celery_beat
+  #   command: celery -A core beat -l info
+  #   volumes:
+  #   - ./django-app:/django-app
+  #   depends_on:
+  #   - celery
