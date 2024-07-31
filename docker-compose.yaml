@@ -4,15 +4,15 @@ services:
     image: mysql
     container_name: mysql-service
     volumes:
-    - ./mysql:/var/lib/mysql
+    - ./django-app/data:/var/lib/mysql
     env_file:
     - ./.env
 
   django-app:
-    build:
-      context: ./django-app
-      dockerfile: dockerfile
-    image: django-app
+    image: sahilphule0710/django-app
+    # build:
+    #   context: ./django-app
+    #   dockerfile: dockerfile
     container_name: django-app
     volumes:
     - ./django-app:/django-app
@@ -23,24 +23,25 @@ services:
     depends_on:
     - mysql
 
-  # nginx:
-  #   build: 
-  #     context: ./nginx
-  #     dockerfile: dockerfile
-  #   container_name: nginx
-  #   volumes:
-  #   - ./django-app:/django-app
-  #   ports:
-  #   - 80:80
-  #   depends_on:
-  #   - django-app
+  nginx:
+    image: sahilphule0710/django-app-nginx
+    # build: 
+    #   context: ./nginx
+    #   dockerfile: dockerfile
+    container_name: nginx
+    volumes:
+    - ./django-app:/django-app
+    ports:
+    - 80:80
+    depends_on:
+    - django-app
 
   # redis:
   #   image: redis
   #   container_name: redis
 
   # celery:
-  #   image: django-app
+  #   image: sahilphule0710/django-app
   #   container_name: celery
   #   command: celery -A core worker -l INFO
   #   volumes:
@@ -50,7 +51,7 @@ services:
   #   - redis
   
   # celery_beat:
-  #   image: django-app
+  #   image: sahilphule0710/django-app
   #   container_name: celery_beat
   #   command: celery -A core beat -l info
   #   volumes:
