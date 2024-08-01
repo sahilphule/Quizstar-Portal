@@ -19,9 +19,7 @@ spec:
       containers:
       - name: celery-beat-container
         image: sahilphule0710/django-app
-        # imagePullPolicy: Never
-        imagePullSecrets:
-        - name: app-secret
+        imagePullPolicy: Never
         command: ['celery', '-A', 'core', 'beat', '-l', 'DEBUG']
         envFrom:
         - configMapRef:

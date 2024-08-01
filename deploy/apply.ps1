@@ -1,3 +1,4 @@
+kubectl apply -f docker-secret.yaml
 kubectl apply -f secret.yaml
 kubectl apply -f configmap.yaml
 

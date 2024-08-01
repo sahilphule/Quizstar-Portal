@@ -1,5 +1,4 @@
 configmap.yaml
-secret.yaml
+*secret.yaml
 .env
-data
 __pycache__

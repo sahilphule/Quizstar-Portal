@@ -19,9 +19,7 @@ spec:
       containers:
       - name: celery-worker-container
         image: sahilphule0710/django-app
-        # imagePullPolicy: Never
-        imagePullSecrets:
-        - name: app-secret
+        imagePullPolicy: Never
         command: ['celery', '-A', 'core', 'worker', '-l', 'INFO']
         envFrom:
         - configMapRef:

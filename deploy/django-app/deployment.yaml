@@ -16,12 +16,12 @@ spec:
         pod: django-app
     spec:
       restartPolicy: Always
+      imagePullSecrets:
+      - name: docker-secret
       containers:
       - name: django-app-container
         image: sahilphule0710/django-app
         # imagePullPolicy: Never
-        imagePullSecrets:
-        - name: app-secret
         command: ['/bin/bash','./entrypoint.sh']
         ports:
         - containerPort: 8000

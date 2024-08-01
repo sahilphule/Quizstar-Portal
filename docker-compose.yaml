@@ -13,7 +13,7 @@ services:
     # build:
     #   context: ./django-app
     #   dockerfile: dockerfile
-    container_name: django-app
+    container_name: django-app-service
     volumes:
     - ./django-app:/django-app
     env_file:
