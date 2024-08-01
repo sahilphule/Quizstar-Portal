@@ -5,7 +5,7 @@ metadata:
   namespace: quizstar
 spec:
   storageClassName: manual
-  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 1Gi
   accessModes:

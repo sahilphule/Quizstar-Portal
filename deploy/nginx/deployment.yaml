@@ -16,10 +16,12 @@ spec:
         pod: nginx
     spec:
       restartPolicy: Always
+      imagePullSecrets:
+      - name: docker-secret
       containers:
       - name: nginx-container
-        image: django-app-nginx
-        imagePullPolicy: Never
+        image: sahilphule0710/django-app-nginx
+        # imagePullPolicy: Never
         ports:
         - containerPort: 80
         volumeMounts:

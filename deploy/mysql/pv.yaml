@@ -5,10 +5,10 @@ metadata:
   namespace: quizstar
 spec:
   storageClassName: manual
-  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 1Gi
   accessModes:
   - ReadWriteOnce
   hostPath:
-    path: /home/docker/quizstar/django-app/data
+    path: /home/docker/quizstar/data
