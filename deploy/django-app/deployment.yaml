@@ -22,7 +22,7 @@ spec:
       - name: django-app-container
         image: sahilphule0710/django-app
         # imagePullPolicy: Never
-        command: ['/bin/bash','./entrypoint.sh']
+        command: ['/bin/sh','./entrypoint.sh']
         ports:
         - containerPort: 8000
         envFrom:

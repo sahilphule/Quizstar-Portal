@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+
 import os
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,18 +22,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG','False') == 'True'
-
+DEBUG = False
 ALLOWED_HOSTS = ['*']
-
 CSRF_TRUSTED_ORIGINS = ['http://localhost','http://127.0.0.1']
 
-# Application definition
 
+# Application definition
 INSTALLED_APPS = [
     'portal',
     'django.contrib.admin',
@@ -126,20 +128,15 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 if not DEBUG:
-    STATIC_ROOT = 'static/'
+    STATIC_ROOT='static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "portal" / "static" / "portal/",
-    BASE_DIR / "portal" / "templates" / "portal/",
-    BASE_DIR / "templates/"
+    BASE_DIR / "static1/",
+    BASE_DIR /  "portal" / "templates" / "portal" / "user-login" /  "build" / "static/"             
 ]
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR,"/portal/static/portal/"),
-#     os.path.join(BASE_DIR,"/portal/templates/portal/user-login/build/static/")
-# ]
 
-# Default primary key field type
+#  Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
