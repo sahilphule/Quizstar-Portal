@@ -1,11 +1,4 @@
 version: 0.2
-env:
-  variables:
-    DOCKER_USERNAME: "sahilphule0710"
-    IMAGE_NAME: "django-app"
-    IMAGE_TAG: "latest"
-    DOCKER_PASSWORD: "Sahil@2003"
-    
 phases:
   pre_build:
     commands:
@@ -14,11 +7,15 @@ phases:
   build:
     commands:
     - echo build started on `date`
-    - echo building the docker image...
-    - docker build -t $IMAGE_NAME:$IMAGE_TAG ./django-app
-    - docker tag $IMAGE_NAME:$IMAGE_TAG $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG
+    - echo building the docker image $IMAGE_NAME1 ...
+    - docker build -t $IMAGE_NAME1:$IMAGE_TAG ./django-app
+    - docker tag $IMAGE_NAME1:$IMAGE_TAG $DOCKER_USERNAME/$IMAGE_NAME1:$IMAGE_TAG
+    - echo building the docker image $IMAGE_NAME2 ...
+    - docker build -t $IMAGE_NAME2:$IMAGE_TAG ./nginx
+    - docker tag $IMAGE_NAME2:$IMAGE_TAG $DOCKER_USERNAME/$IMAGE_NAME2:$IMAGE_TAG
   post_build:
     commands:
-    - echo build completed on `data`
-    - echo pushing the docker image...
-    - docker push $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG
+    - echo builds completed on `data`
+    - echo pushing the docker images to dockerhub ...
+    - docker push $DOCKER_USERNAME/$IMAGE_NAME1:$IMAGE_TAG
+    - docker push $DOCKER_USERNAME/$IMAGE_NAME2:$IMAGE_TAG
