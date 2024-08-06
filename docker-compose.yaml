@@ -14,6 +14,7 @@ services:
     #   context: ./django-app
     #   dockerfile: dockerfile
     container_name: django-app-service
+    command: ['/bin/sh','./entrypoint.sh']
     volumes:
     - ./django-app:/django-app
     env_file:
@@ -28,7 +29,7 @@ services:
     # build: 
     #   context: ./nginx
     #   dockerfile: dockerfile
-    container_name: nginx
+    container_name: nginx-service
     volumes:
     - ./django-app:/django-app
     ports:
@@ -38,11 +39,11 @@ services:
 
   # redis:
   #   image: redis
-  #   container_name: redis
+  #   container_name: redis-service
 
   # celery:
   #   image: sahilphule0710/django-app
-  #   container_name: celery
+  #   container_name: celery-service
   #   command: celery -A core worker -l INFO
   #   volumes:
   #   - ./django-app:/django-app
@@ -52,7 +53,7 @@ services:
   
   # celery_beat:
   #   image: sahilphule0710/django-app
-  #   container_name: celery_beat
+  #   container_name: celery-beat-service
   #   command: celery -A core beat -l info
   #   volumes:
   #   - ./django-app:/django-app

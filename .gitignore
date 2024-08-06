@@ -2,3 +2,4 @@ configmap.yaml
 *secret.yaml
 .env
 __pycache__
+celerybeat-schedule
