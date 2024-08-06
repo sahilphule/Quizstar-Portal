@@ -4,7 +4,6 @@ env:
     DOCKER_USERNAME: "sahilphule0710"
     IMAGE_NAME: "django-app"
     IMAGE_TAG: "latest"
-  parameter-store:
     DOCKER_PASSWORD: "Sahil@2003"
     
 phases:
